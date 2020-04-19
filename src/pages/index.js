@@ -17,7 +17,6 @@ const SideNav = styled(Sider)`
 `;
 
 const StyledLayout = styled(Layout)`
-  height: 100vh;
 `;
 
 const IndexPage = () => {
