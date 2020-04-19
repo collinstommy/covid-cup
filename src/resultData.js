@@ -19,8 +19,8 @@ export const races = [
 						runScore: 1760,
 						runScoreVert: 242,
 						penalties: 0,
-						cycleDistance: 1.2,
-						cycleDistanceVert: 1.2,
+						cycleDistance: 19.9,
+						cycleDistanceVert: 59,
 						runDistance: 8.8,
 						runDistanceVert: 121
 					},

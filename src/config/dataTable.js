@@ -74,10 +74,5 @@ export const timeColumns = [
 		dataIndex: 'runDistanceVert',
 		key: 'runDistanceVert',
 		render: asM
-	},
-	{
-		title: 'Penalties',
-		dataIndex: 'penalties',
-		key: 'penalties'
 	}
 ];

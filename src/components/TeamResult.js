@@ -29,7 +29,7 @@ const TeamResult = ({ name, members, isWinner, showScore }) => {
 			summary={(pageData) => {
 				const keys = columnConfig.map(({ key }) => key);
 				keys.shift();
-				keys.pop();
+				console.log(keys);
 
 				const teamTotal = pageData.reduce((sum, record) => (sum += getTotal(record)), 0);
 
@@ -38,12 +38,13 @@ const TeamResult = ({ name, members, isWinner, showScore }) => {
 						<th>Totals</th>
 						{keys.map((colId) => (
 							<td>
-								<Text>{pageData.reduce((sum, record) => (sum += record[colId]), 0)}</Text>
+								{colId !== 'total' ? (
+									<Text>{pageData.reduce((sum, record) => (sum += record[colId]), 0)}</Text>
+								) : (
+									<Text strong>{teamTotal}</Text>
+								)}
 							</td>
 						))}
-						<th>
-							<Text strong>{teamTotal}</Text>
-						</th>
 					</tr>
 				);
 			}}
