@@ -1,21 +1,55 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from 'react';
+import { Menu, Layout, PageHeader } from 'antd';
+import '../layout.css';
+import styled from 'styled-components';
+import { races } from '../resultData';
+import RaceDetail from '../components/RaceDetail';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const { Footer, Sider, Content } = Layout;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const MainContent = styled(Content)`
+  padding: 40px;
+`;
 
-export default IndexPage
+const SideNav = styled(Sider)`
+  color: #fff;
+  border-right: 1px solid #f0f0f0;
+`;
+
+const StyledLayout = styled(Layout)`
+  height: 100vh;
+`;
+
+const IndexPage = () => {
+	const defaultId = races[1].id;
+	const [ selectedRace, setRace ] = useState(defaultId);
+	const handleClick = ({ key }) => {
+		setRace(key);
+	};
+	const race = races.find(({ id }) => id === selectedRace);
+
+	return (
+		<StyledLayout>
+			<PageHeader title="Covid Cup" />
+			<Layout className="site-layout-background">
+				<SideNav theme="light">
+					<Menu defaultSelectedKeys={[ defaultId ]} mode="inline" styled={{ height: '100%' }}>
+						<Menu.ItemGroup title="Races">
+							{races.map((race) => (
+								<Menu.Item key={race.id} onClick={handleClick}>
+									{race.label}
+								</Menu.Item>
+							))}
+						</Menu.ItemGroup>
+					</Menu>
+				</SideNav>
+				<MainContent>
+					<RaceDetail {...race} />
+				</MainContent>
+			</Layout>
+			<Footer>© Copyright O'Mahony Event Management</Footer>
+		</StyledLayout>
+	);
+};
+
+export default IndexPage;
