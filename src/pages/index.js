@@ -9,6 +9,9 @@ const { Footer, Sider, Content } = Layout;
 
 const MainContent = styled(Content)`
   padding: 40px;
+  &&& { 
+    overflow-x: auto;
+  }
 `;
 
 const SideNav = styled(Sider)`
@@ -31,7 +34,7 @@ const IndexPage = () => {
 		<StyledLayout>
 			<PageHeader title="Covid Cup" />
 			<Layout className="site-layout-background">
-				<SideNav theme="light">
+				<SideNav breakpoint="md" collapsedWidth="0" theme="light">
 					<Menu defaultSelectedKeys={[ defaultId ]} mode="inline" styled={{ height: '100%' }}>
 						<Menu.ItemGroup title="Races">
 							{races.map((race) => (

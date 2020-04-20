@@ -25,7 +25,7 @@ const RaceDetail = ({
     <>
       <Title level={2}>{label}</Title>
       <Title level={4}>Winner: {winningTeamName}</Title>
-      <Space direction="vertical" size="large" style={{ width: '100%' }}>
+      <Space direction="vertical" size="large">
         <Radio.Group onChange={handleMetricToggle} value={toggleValue}>
           <Radio.Button value="Score">Score</Radio.Button>
           <Radio.Button value="time">Time</Radio.Button>
