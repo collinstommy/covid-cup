@@ -10,7 +10,7 @@ const RaceDetail = ({
 }) => {
 
   const [showScore, setShowScore] = useState(true);
-  if(!teams.length){
+  if (!teams.length) {
     return 'No data';
   };
 
@@ -28,7 +28,7 @@ const RaceDetail = ({
       <Space direction="vertical" size="large">
         <Radio.Group onChange={handleMetricToggle} value={toggleValue}>
           <Radio.Button value="Score">Score</Radio.Button>
-          <Radio.Button value="time">Time</Radio.Button>
+          <Radio.Button value="time">Distance</Radio.Button>
         </Radio.Group>
         {teams.map(team => {
           const isWinner = team.id === winner;
